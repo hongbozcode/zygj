@@ -1,7 +1,10 @@
 package com.zygj.common.config;
 
+import com.zygj.common.core.domain.BaseEntity;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * 读取项目相关配置

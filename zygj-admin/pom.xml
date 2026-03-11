@@ -24,11 +24,7 @@
             <optional>true</optional> <!-- 表示依赖不会传递 -->
         </dependency>
 
-        <!-- spring-doc -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        </dependency>
+
 
          <!-- Mysql驱动包 -->
         <dependency>
@@ -53,7 +49,11 @@
             <groupId>com.zygj</groupId>
             <artifactId>zygj-generator</artifactId>
         </dependency>
-
+<!--        酒店业务模块-->
+        <dependency>
+            <groupId>com.zygj</groupId>
+            <artifactId>zygj-hotel-platform</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
