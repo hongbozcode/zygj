@@ -19,6 +19,8 @@ import com.zygj.common.utils.StringUtils;
 import com.zygj.common.utils.file.FileUploadUtils;
 import com.zygj.common.utils.file.FileUtils;
 import com.zygj.framework.config.ServerConfig;
+import com.zygj.oss.AliyunOSSOperator;
+
 
 /**
  * 通用请求处理
@@ -29,12 +31,17 @@ import com.zygj.framework.config.ServerConfig;
 @RequestMapping("/common")
 public class CommonController
 {
+
+
     private static final Logger log = LoggerFactory.getLogger(CommonController.class);
 
     @Autowired
     private ServerConfig serverConfig;
 
     private static final String FILE_DELIMITER = ",";
+
+    @Autowired
+    private AliyunOSSOperator aliyunOSSOperator;
 
     /**
      * 通用下载请求
@@ -79,12 +86,13 @@ public class CommonController
             // 上传文件路径
             String filePath = RuoYiConfig.getUploadPath();
             // 上传并返回新文件名称
-            String fileName = FileUploadUtils.upload(filePath, file);
-            String url = serverConfig.getUrl() + fileName;
+//            String fileName = FileUploadUtils.upload(filePath, file);
+            String url = aliyunOSSOperator.upload(file.getBytes(), file.getOriginalFilename());
+//            String url = serverConfig.getUrl() + fileName;
             AjaxResult ajax = AjaxResult.success();
             ajax.put("url", url);
-            ajax.put("fileName", fileName);
-            ajax.put("newFileName", FileUtils.getName(fileName));
+            ajax.put("fileName", url);
+            ajax.put("newFileName", FileUtils.getName(url));
             ajax.put("originalFilename", file.getOriginalFilename());
             return ajax;
         }

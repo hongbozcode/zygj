@@ -49,7 +49,7 @@ public class ${ClassName}Controller extends BaseController
     @GetMapping("/list")
     @Operation(summary = "查询${functionName}列表")
 #if($table.crud || $table.sub)
-    public TableDataInfo<List<${ClassName}>> list( @Parameter(description = "${functionName}查询条件") ${ClassName} ${className})
+    public TableDataInfo list( @ParameterObject ${ClassName} ${className})
     {
         startPage();
         List<${ClassName}> list = ${className}Service.select${ClassName}List(${className});
@@ -83,7 +83,7 @@ public class ${ClassName}Controller extends BaseController
     @PreAuthorize("@ss.hasPermi('${permissionPrefix}:query')")
     @GetMapping(value = "/{${pkColumn.javaField}}")
     @Operation(summary = "获取${functionName}详细信息")
-    public R<${ClassName}> getInfo(@Parameter(description = "${functionName}ID" ,required = true))
+    public R<${ClassName}> getInfo(@Parameter(description = "${functionName}ID" ,required = true)
             @PathVariable("${pkColumn.javaField}") ${pkColumn.javaType} ${pkColumn.javaField})
     {
 ##        return success(${className}Service.select${ClassName}By${pkColumn.capJavaField}(${pkColumn.javaField}));

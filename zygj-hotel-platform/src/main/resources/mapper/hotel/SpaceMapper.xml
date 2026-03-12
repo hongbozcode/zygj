@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zygj.hotel.mapper.SpaceMapper">
+    
+    <resultMap type="Space" id="SpaceResult">
+        <result property="id"    column="id"    />
+        <result property="hotelId"    column="hotel_id"    />
+        <result property="parentId"    column="parent_id"    />
+        <result property="spaceName"    column="space_name"    />
+        <result property="spaceType"    column="space_type"    />
+        <result property="sortOrder"    column="sort_order"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+    </resultMap>
+
+    <sql id="selectSpaceVo">
+        select id, hotel_id, parent_id, space_name, space_type, sort_order, create_by, create_time, update_by, update_time, remark from space
+    </sql>
+
+    <select id="selectSpaceList" parameterType="Space" resultMap="SpaceResult">
+        <include refid="selectSpaceVo"/>
+        <where>  
+            <if test="spaceType != null "> and space_type = #{spaceType}</if>
+            <if test="sortOrder != null "> and sort_order = #{sortOrder}</if>
+        </where>
+    </select>
+    
+    <select id="selectSpaceById" parameterType="Long" resultMap="SpaceResult">
+        <include refid="selectSpaceVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertSpace" parameterType="Space" useGeneratedKeys="true" keyProperty="id">
+        insert into space
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="hotelId != null">hotel_id,</if>
+            <if test="parentId != null">parent_id,</if>
+            <if test="spaceName != null and spaceName != ''">space_name,</if>
+            <if test="spaceType != null">space_type,</if>
+            <if test="sortOrder != null">sort_order,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="remark != null">remark,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="hotelId != null">#{hotelId},</if>
+            <if test="parentId != null">#{parentId},</if>
+            <if test="spaceName != null and spaceName != ''">#{spaceName},</if>
+            <if test="spaceType != null">#{spaceType},</if>
+            <if test="sortOrder != null">#{sortOrder},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateBy != null">#{updateBy},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="remark != null">#{remark},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSpace" parameterType="Space">
+        update space
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="hotelId != null">hotel_id = #{hotelId},</if>
+            <if test="parentId != null">parent_id = #{parentId},</if>
+            <if test="spaceName != null and spaceName != ''">space_name = #{spaceName},</if>
+            <if test="spaceType != null">space_type = #{spaceType},</if>
+            <if test="sortOrder != null">sort_order = #{sortOrder},</if>
+            <if test="createBy != null">create_by = #{createBy},</if>
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateBy != null">update_by = #{updateBy},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="remark != null">remark = #{remark},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteSpaceById" parameterType="Long">
+        delete from space where id = #{id}
+    </delete>
+
+    <delete id="deleteSpaceByIds" parameterType="String">
+        delete from space where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

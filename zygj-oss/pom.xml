@@ -9,21 +9,26 @@
         <version>3.9.1</version>
     </parent>
 
-    <artifactId>zygj-hotel-platform</artifactId>
+
+    <artifactId>zygj-oss</artifactId>
+
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
     <dependencies>
         <dependency>
-            <groupId>com.zygj</groupId>
-            <artifactId>zygj-framework</artifactId>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
         </dependency>
 
-
+        <dependency>
+            <groupId>com.zygj</groupId>
+            <artifactId>zygj-common</artifactId>
+        </dependency>
     </dependencies>
-
 
 </project>

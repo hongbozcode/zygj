@@ -54,6 +54,10 @@
             <groupId>com.zygj</groupId>
             <artifactId>zygj-hotel-platform</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.zygj</groupId>
+            <artifactId>zygj-oss</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

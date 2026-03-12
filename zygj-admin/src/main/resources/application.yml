@@ -129,7 +129,7 @@ springdoc:
     - group: 'default'
       display-name: '测试模块'
       paths-to-match: '/**'
-      packages-to-scan: com.zygj.web.controller.tool
+      packages-to-scan: com.zygj.hotel.controller
 
 # 防盗链配置
 referer:
@@ -146,3 +146,9 @@ xss:
   excludes: /system/notice
   # 匹配链接
   urlPatterns: /system/*,/monitor/*,/tool/*
+
+# 阿里云OSS相关配置
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: javaweb-project-zzyl

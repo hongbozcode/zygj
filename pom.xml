@@ -37,6 +37,7 @@
         <springdoc.version>2.8.14</springdoc.version>
         <lombok.version>1.18.32</lombok.version>
         <mybatis-plus-spring-boot.version>3.5.11</mybatis-plus-spring-boot.version>
+        <aliyun.sdk.oss>3.17.4</aliyun.sdk.oss>
     </properties>
 
     <!-- 依赖声明 -->
@@ -217,6 +218,19 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
             </dependency>
+<!--            阿里云oss-->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.sdk.oss}</version>
+            </dependency>
+
+            <!-- OSS模块 -->
+            <dependency>
+                <groupId>com.zygj</groupId>
+                <artifactId>zygj-oss</artifactId>
+                <version>${zygj.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -228,6 +242,7 @@
         <module>zygj-generator</module>
         <module>zygj-common</module>
         <module>zygj-hotel-platform</module>
+        <module>zygj-oss</module>
     </modules>
     <packaging>pom</packaging>
 

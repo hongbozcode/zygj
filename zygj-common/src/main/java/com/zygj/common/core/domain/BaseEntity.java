@@ -61,4 +61,12 @@ public class BaseEntity implements Serializable
     @TableField(exist = false)
     private Map<String, Object> params;
 
+    public Map<String, Object> getParams()
+    {
+        if (params == null)
+        {
+            params = new HashMap<>();
+        }
+        return params;
+    }
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import com.zygj.common.core.domain.entity.SysUser;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * 用户表 数据层
@@ -144,4 +145,12 @@ public interface SysUserMapper
      * @return 结果
      */
     public SysUser checkEmailUnique(String email);
+
+    /**
+     * 根据id获取登录昵称
+     *
+     * @param userId 用户ID
+     */
+    @Select("select nick_name from sys_user where user_id = #{userId}")
+    public String getNickNameById(Long userId);
 }
