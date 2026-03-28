@@ -1,7 +1,7 @@
 package com.zygj.hotel.service.impl;
 
 import java.util.List;
-import com.zygj.common.utils.DateUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.zygj.hotel.mapper.RoomTypeMapper;
@@ -92,5 +92,14 @@ public class RoomTypeServiceImpl extends ServiceImpl<RoomTypeMapper, RoomType> i
     public int deleteRoomTypeById(Long id)
     {
         return removeById(id) ? 1 : 0;
+    }
+
+    /**
+     * 获取房型列表
+     * @return
+     */
+    @Override
+    public List<RoomType> getAll() {
+        return roomTypeMapper.getAll();
     }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.zygj.hotel.domain.Space;
 import com.zygj.hotel.domain.query.SpaceQuery;
 import com.zygj.hotel.domain.vo.SpaceBuildingVo;
+import com.zygj.hotel.domain.vo.SpaceFloorVo;
 import com.zygj.hotel.domain.vo.SpaceVo;
 
 /**
@@ -69,4 +70,10 @@ public interface ISpaceService extends IService<Space>
      */
     List<SpaceBuildingVo> getAllBuilding();
 
+    /**
+     * 获取所有楼层
+     * @param buildingId 楼栋ID
+     * @return 楼层集合
+     */
+    List<SpaceFloorVo> getAllFloor(String buildingId);
 }

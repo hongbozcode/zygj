@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zygj.common.utils.StringUtils;
 import com.zygj.hotel.domain.query.SpaceQuery;
 import com.zygj.hotel.domain.vo.SpaceBuildingVo;
+import com.zygj.hotel.domain.vo.SpaceFloorVo;
 import com.zygj.hotel.domain.vo.SpaceVo;
 import com.zygj.system.mapper.SysUserMapper;
 import org.springframework.beans.BeanUtils;
@@ -161,5 +162,16 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space> implements
     @Override
     public List<SpaceBuildingVo> getAllBuilding() {
         return spaceMapper.getAllBuilding();
+    }
+
+    /**
+     * 获取所有楼层
+     *
+     * @param buildingId 楼栋ID
+     * @return 楼层集合
+     */
+    @Override
+    public List<SpaceFloorVo> getAllFloor(String buildingId) {
+        return spaceMapper.getAllFloor(buildingId);
     }
 }

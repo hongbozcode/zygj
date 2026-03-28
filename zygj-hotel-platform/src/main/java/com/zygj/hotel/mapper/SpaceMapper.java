@@ -2,6 +2,7 @@ package com.zygj.hotel.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.zygj.hotel.domain.vo.SpaceBuildingVo;
+import com.zygj.hotel.domain.vo.SpaceFloorVo;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 import com.zygj.hotel.domain.Space;
@@ -71,4 +72,11 @@ public interface SpaceMapper extends BaseMapper<Space>
     @Select("select space_name as buildingName,id as buildingId from space where parent_id = 0")
     List<SpaceBuildingVo> getAllBuilding();
 
+    /**
+     * 获取所有楼层
+     * @param buildingId 楼栋id
+     * @return 列表
+     */
+    @Select("select space_name as floorName,id as floorId from space where parent_id = #{buildingId}")
+    List<SpaceFloorVo> getAllFloor(String buildingId);
 }

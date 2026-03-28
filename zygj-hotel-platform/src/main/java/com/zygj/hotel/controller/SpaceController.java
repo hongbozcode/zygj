@@ -5,6 +5,7 @@ import java.util.List;
 import com.zygj.common.core.domain.R;
 import com.zygj.hotel.domain.query.SpaceQuery;
 import com.zygj.hotel.domain.vo.SpaceBuildingVo;
+import com.zygj.hotel.domain.vo.SpaceFloorVo;
 import com.zygj.hotel.domain.vo.SpaceVo;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -110,6 +111,15 @@ public class SpaceController extends BaseController
     @Operation(summary = "获取所有楼栋")
     public R<List<SpaceBuildingVo>> getAllBuilding(){
         return R.ok(spaceService.getAllBuilding());
+    }
+
+    /**
+     * 根据楼栋id获取所有楼层
+     */
+    @GetMapping("/getAllFloor/{buildingId}")
+    @Operation(summary = "根据楼栋id获取所有楼层")
+    public R<List<SpaceFloorVo>> getAllFloor( @Parameter(description = "楼栋ID" ,required = true) @PathVariable String buildingId){
+        return R.ok(spaceService.getAllFloor(buildingId));
     }
 
 }

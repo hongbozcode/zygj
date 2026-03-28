@@ -59,4 +59,11 @@ public interface IRoomTypeService extends IService<RoomType>
      * @return 结果
      */
     public int deleteRoomTypeById(Long id);
+
+    /**
+     * 获取房型列表
+     * @return
+     */
+    List<RoomType> getAll();
+
 }

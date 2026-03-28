@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 import com.zygj.hotel.domain.RoomType;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * 房型Mapper接口
@@ -61,4 +62,11 @@ public interface RoomTypeMapper extends BaseMapper<RoomType>
      * @return 结果
      */
     public int deleteRoomTypeByIds(Long[] ids);
+
+    /**
+     * 查询所有房型
+     * @return 房型列表
+     */
+    @Select("select * from room_type")
+    List<RoomType> getAll();
 }

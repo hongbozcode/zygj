@@ -114,4 +114,13 @@ public class RoomTypeController extends BaseController
     {
         return toAjax(roomTypeService.deleteRoomTypeByIds(ids));
     }
+
+    /**
+     * 得到所有房型
+     */
+    @GetMapping("/getAll")
+    @Operation(summary = "得到所有房型")
+    public R<List<RoomType>> getAll(){
+        return R.ok(roomTypeService.getAll());
+    }
 }
